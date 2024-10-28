@@ -4,7 +4,7 @@ Added a method called `get_hyper`
 """
 import csv
 import math
-from typing import List, Tuple
+from typing import List, Tuple, Dict, Optional
 
 
 class Server:
@@ -54,8 +54,8 @@ class Server:
             List[List]: A list of rows for the specified page, or
             an empty list if page and page_size are out of range.
         """
-        assert isinstance(page, int) and page > 0, "Page must be a positive integer."
-        assert isinstance(page_size, int) and page_size > 0, "Page size must be a positive integer."
+        assert isinstance(page, int) and page > 0,
+        assert isinstance(page_size, int) and page_size > 0,
 
         start_index, end_index = self.index_range(page, page_size)
         dataset = self.dataset()
