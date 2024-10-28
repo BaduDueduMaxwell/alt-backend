@@ -8,8 +8,7 @@ from typing import List, Tuple
 
 
 class Server:
-    """Server class to paginate a database of popular baby names.
-    """
+    """Server class to paginate a database of popular baby names."""
     DATA_FILE = "Popular_Baby_Names.csv"
 
     def __init__(self):
@@ -56,8 +55,8 @@ class Server:
             ([]): an empty list if page and page_size are out of range
         """
         assert isinstance(page, int) and page > 0,
-        assert isinstance(page_size, int) and page_size > 0
-        start_index, end_index = index_range(page, page_size)
+        assert isinstance(page_size, int) and page_size > 0,
+        start_index, end_index = self.index_range(page, page_size)
 
         dataset = self.dataset()
 
