@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Added a method called `get_page`
+Added a method called `get_hyper`
 """
 import csv
 import math
@@ -15,13 +15,12 @@ class Server:
         self.__dataset = None
 
     def dataset(self) -> List[List]:
-        """Cached dataset
-        """
+        """Cached dataset."""
         if self.__dataset is None:
             with open(self.DATA_FILE) as f:
                 reader = csv.reader(f)
                 dataset = [row for row in reader]
-            self.__dataset = dataset[1:]
+            self.__dataset = dataset[1:]  # Skip header
 
         return self.__dataset
 
@@ -45,21 +44,22 @@ class Server:
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
         """
-        Get items for the given page number
+        Get items for the given page number.
 
         Args:
-            page (int): page number
-            page_size (int): number of items per page
+            page (int): Page number.
+            page_size (int): Number of items per page.
+
         Returns:
-            (List[List]): a list of list(row) if inputs are with range
-            ([]): an empty list if page and page_size are out of range
+            List[List]: A list of rows for the specified page, or
+            an empty list if page and page_size are out of range.
         """
-        assert isinstance(page, int) and page > 0,
-        assert isinstance(page_size, int) and page_size > 0,
+        assert isinstance(page, int) and page > 0, "Page must be a positive integer."
+        assert isinstance(page_size, int) and page_size > 0, "Page size must be a positive integer."
+
         start_index, end_index = self.index_range(page, page_size)
-
         dataset = self.dataset()
-
         if start_index >= len(dataset):
             return []
+
         return dataset[start_index:end_index]
