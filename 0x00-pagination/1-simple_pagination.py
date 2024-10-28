@@ -4,7 +4,7 @@ Added a method called `get_hyper`
 """
 import csv
 import math
-from typing import List, Tuple, Dict, Optional
+from typing import List, Tuple
 
 
 class Server:
