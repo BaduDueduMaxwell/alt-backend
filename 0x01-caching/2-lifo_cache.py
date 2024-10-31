@@ -19,7 +19,7 @@ class LIFOCache(BaseCaching):
                 last_key = next(reversed(self.cache_data))
                 self.cache_data.pop(last_key)
                 print(f"DISCARD: {last_key}")
-            
+
             self.cache_data[key] = item
 
     def get(self, key):
