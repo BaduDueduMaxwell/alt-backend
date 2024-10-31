@@ -14,7 +14,7 @@ class FIFOCache(BaseCaching):
                 print(f"DISCARD {oldest_key}")
 
             self.cache_data[key] = item
-        
+
     def get(self, key):
         """Retrieve an item by key"""
         return self.cache_data.get(key)
