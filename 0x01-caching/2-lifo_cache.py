@@ -13,7 +13,6 @@ class LIFOCache(BaseCaching):
 
     def put(self, key, item):
         """Add an item to the cache using LIFO eviction policy"""
-
         if key is not None and item is not None:
             if len(self.cache_data) >= BaseCaching.MAX_ITEMS:
                 last_key = next(reversed(self.cache_data))
