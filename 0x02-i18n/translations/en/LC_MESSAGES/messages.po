@@ -18,8 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.16.0\n"
 
+
+# This is the English translation for the title of the homepage, used in the <title> tag
 msgid "home_title"
 msgstr "Welcome to Holberton"
 
+# This is the English translation for the main header on the homepage, shown in an <h1> element
 msgid "home_header"
 msgstr "Hello world!"
