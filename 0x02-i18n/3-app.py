@@ -16,13 +16,15 @@ class Config:
 # Instantiate Flask app, set config, and initialize Babel
 app = Flask(__name__)
 app.config.from_object(Config)
-babel = Babel(app)
 
 
-@babel.localeselector
 def get_locale():
     """Function to determine the best match with supported languages"""
     return request.accept_languages.best_match(app.config['LANGUAGES'])
+
+
+babel = Babel()
+babel.init_app(app, locale_selector=get_locale)
 
 
 @app.route('/')
