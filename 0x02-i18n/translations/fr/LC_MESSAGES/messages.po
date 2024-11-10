@@ -26,3 +26,7 @@ msgstr "Bienvenue chez Holberton"
 # This is the French translation for the main header on the homepage, shown in an <h1> element
 msgid "home_header"
 msgstr "Bonjour monde!"
+
+# for app.py and index.html
+msgid "current_time_is"
+msgstr "Nous sommes le %(current_time)s."

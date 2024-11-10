@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="{{ g.locale }}">
+<head>
+    <meta charset="utf-8">
+    <title>Welcome</title>
+</head>
+<body>
+    {% if g.locale == 'fr' %}
+        <h1>Bonjour le monde!</h1>
+    {% elif g.locale == 'kg' %}
+        <h1>Салам дүйнө!</h1>
+    {% elif g.locale == 'es' %}
+        <h1>¡Hola Mundo!</h1>
+    {% else %}
+        <h1>Hello World!</h1>
+    {% endif %}
+    
+    {% if g.user %}
+        <p>
+            {% if g.locale == 'fr' %}
+                Vous êtes connecté en tant que {{ g.user.name }}.
+            {% elif g.locale == 'kg' %}
+                Сиз {{ g.user.name }} катары катталдыңыз.
+            {% elif g.locale == 'es' %}
+                Estás conectado como {{ g.user.name }}.
+            {% else %}
+                You are logged in as {{ g.user.name }}.
+            {% endif %}
+        </p>
+
+        <p>
+            {% if g.locale == 'fr' %}
+                Nous sommes le {{ current_time }}.
+            {% else %}
+                The current time is {{ current_time }}.
+            {% endif %}
+        </p>
+
+    {% else %}
+        <p>
+            {% if g.locale == 'fr' %}
+                Vous n'êtes pas connecté.
+            {% elif g.locale == 'kg' %}
+                Сиз катталган жоксуз.
+            {% elif g.locale == 'es' %}
+                No estás conectado.
+            {% else %}
+                You are not logged in.
+            {% endif %}
+        </p>
+    {% endif %}
+</body>
+</html>

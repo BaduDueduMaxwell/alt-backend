@@ -26,3 +26,7 @@ msgstr "Welcome to Holberton"
 # This is the English translation for the main header on the homepage, shown in an <h1> element
 msgid "home_header"
 msgstr "Hello world!"
+
+# for app.py and index.html
+msgid "current_time_is"
+msgstr "The current time is %(current_time)s."
