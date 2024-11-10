@@ -35,6 +35,7 @@ def before_request():
     # Set a default locale based on the user or the default to 'en'
     g.locale = g.user['locale'] if g.user and g.user.get('locale') else 'en'
 
+
 @app.route('/')
 def index():
     """Render the index template with user data."""
@@ -43,7 +44,7 @@ def index():
 
 def get_locale():
     """Get user's preferred local if it is supported
-    The order of priority should be: 
+    The order of priority should be:
         1 - Locale from URL parameters
         2 - Locale from user settings
         3 - Locale from request header
@@ -60,7 +61,9 @@ def get_locale():
         return g.user['locale']
 
     # Get local from request headers
-    user_language = request.accept_languages.best_match(['en', 'fr', 'kg', 'es'])
+    user_language = request.accept_languages.best_match(
+        ['en', 'fr', 'kg', 'es']
+    )
     if user_language:
         return user_language
 
