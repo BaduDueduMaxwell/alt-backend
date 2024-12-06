@@ -7,20 +7,27 @@ const jobData = {
   message: "Chikibom completed!",
 };
 
-const job = queue.create("push_notification_code", jobData).save((err) => {
-  if (err) {
-    console.log("Error creating job", err);
-  } else {
-    console.log(`Notification job created ${job.id}`);
-  }
-});
+jobs.forEach((jobData) => {
+  const job = queue.create("push_notification_code", jobData).save((err) => {
+    if (err) {
+      console.log("Error creating job", err);
+    } else {
+      console.log(`Notification job created ${job.id}`);
+    }
+  });
 
-// Job completion handler
-job.on("complete", () => {
-  console.log("Notification job completed");
-});
+  // Job completion handler
+  job.on("complete", () => {
+    console.log(`Notification job ${job.id} completed`);
+  });
 
-// Job failure handler
-job.on("failed", (err) => {
-  console.log(`Notification job failed: ${err}`);
+  // Job failure handler
+  job.on("failed", (err) => {
+    console.log(`Notification job ${job.id} failed: ${err}`);
+  });
+
+  // Job progress handler
+  job.on("progress", (progress) => {
+    console.log(`Notification job ${job.id} ${progress}% complete`);
+  });
 });
